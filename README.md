@@ -46,7 +46,7 @@ Our math reasoning code is modified from [PiSSA](https://github.com/GraphPKU/PiS
 For training peft modules on math and code tasks, we do the following preparation.
 - Data(download directly in this path):
   - Math dataset: [meta-math/MetaMathQA](https://huggingface.co/datasets/meta-math/MetaMathQA)
-  - Code dataset: [m-a-p/CodeFeedback-Filtered-Instruction](https://huggingface.co/datasets/m-a-p/CodeFeedback-Filtered-Instruction)
+  <!-- - Code dataset: [m-a-p/CodeFeedback-Filtered-Instruction](https://huggingface.co/datasets/m-a-p/CodeFeedback-Filtered-Instruction) -->
 - Environment:
     ```
     conda create -n milora python=3.10.14 -y
