@@ -64,7 +64,11 @@ For training peft modules on math and code tasks, we do the following preparatio
   
   Run the following shell to train your model, modified `$save_root` to determine which path to save the checkpoints.
   - ```
-    bash scripts/run_train.sh $save_root
+    # to replicate milora results
+    bash scripts/run_milora.sh $save_root
+
+    # to replicate lora results
+    bash scripts/run_lora.sh $save_root
     ```
   See the training log in `./logs`, and we also implement `report_to tensorboard` by default. Use `tensorboard --logdir $save_root` to check tensorboard output.
 ### 2.2. Evaluation
