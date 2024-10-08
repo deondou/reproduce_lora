@@ -1,0 +1,35 @@
+[2024-10-05 20:42:34,208] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (2.3.0), only 1.0.0 is known to be compatible
+[2024-10-05 20:42:35,101] [WARNING] [runner.py:202:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2024-10-05 20:42:35,102] [INFO] [runner.py:568:main] cmd = /root/miniconda3/envs/milora/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None train.py --deepspeed configs/stage2.conf --model_name_or_path /root/autodl-tmp/meta-llama/Llama-2-7b-hf --output_dir /math/LLM-Adapters-lora-LR-3e-4--EPOCHS-3-rank-64 --lora_r 64 --lora_alpha 128 --lora_dropout 0.05 --target_modules q_proj,k_proj,v_proj,up_proj,down_proj --data_path meta-math/MetaMathQA --dataset_split  --dataset_field query response --model_max_length 2048 --num_train_epochs 3 --per_device_train_batch_size 1 --gradient_accumulation_steps 16 --save_strategy epoch --learning_rate 3e-4 --weight_decay 0. --warmup_ratio 0 --warmup_steps 100 --lr_scheduler_type linear --logging_steps 1 --bf16 True --tf32 True --method_type lora --report_to tensorboard
+[2024-10-05 20:42:37,020] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (2.3.0), only 1.0.0 is known to be compatible
+[2024-10-05 20:42:37,926] [INFO] [launch.py:139:main] 0 NV_LIBNCCL_DEV_PACKAGE=libnccl-dev=2.17.1-1+cuda12.1
+[2024-10-05 20:42:37,926] [INFO] [launch.py:139:main] 0 NV_LIBNCCL_DEV_PACKAGE_VERSION=2.17.1-1
+[2024-10-05 20:42:37,926] [INFO] [launch.py:139:main] 0 NCCL_VERSION=2.17.1-1
+[2024-10-05 20:42:37,926] [INFO] [launch.py:139:main] 0 NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+[2024-10-05 20:42:37,927] [INFO] [launch.py:139:main] 0 NV_LIBNCCL_PACKAGE=libnccl2=2.17.1-1+cuda12.1
+[2024-10-05 20:42:37,927] [INFO] [launch.py:139:main] 0 NV_LIBNCCL_PACKAGE_NAME=libnccl2
+[2024-10-05 20:42:37,927] [INFO] [launch.py:139:main] 0 NV_LIBNCCL_PACKAGE_VERSION=2.17.1-1
+[2024-10-05 20:42:37,927] [INFO] [launch.py:146:main] WORLD INFO DICT: {'localhost': [0]}
+[2024-10-05 20:42:37,927] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=1, node_rank=0
+[2024-10-05 20:42:37,927] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2024-10-05 20:42:37,927] [INFO] [launch.py:164:main] dist_world_size=1
+[2024-10-05 20:42:37,927] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0
+[2024-10-05 20:42:37,927] [INFO] [launch.py:256:main] process 3715 spawned with command: ['/root/miniconda3/envs/milora/bin/python', '-u', 'train.py', '--local_rank=0', '--deepspeed', 'configs/stage2.conf', '--model_name_or_path', '/root/autodl-tmp/meta-llama/Llama-2-7b-hf', '--output_dir', '/math/LLM-Adapters-lora-LR-3e-4--EPOCHS-3-rank-64', '--lora_r', '64', '--lora_alpha', '128', '--lora_dropout', '0.05', '--target_modules', 'q_proj,k_proj,v_proj,up_proj,down_proj', '--data_path', 'meta-math/MetaMathQA', '--dataset_split', '', '--dataset_field', 'query', 'response', '--model_max_length', '2048', '--num_train_epochs', '3', '--per_device_train_batch_size', '1', '--gradient_accumulation_steps', '16', '--save_strategy', 'epoch', '--learning_rate', '3e-4', '--weight_decay', '0.', '--warmup_ratio', '0', '--warmup_steps', '100', '--lr_scheduler_type', 'linear', '--logging_steps', '1', '--bf16', 'True', '--tf32', 'True', '--method_type', 'lora', '--report_to', 'tensorboard']
+Traceback (most recent call last):
+  File "/root/autodl-tmp/MiLoRA/train.py", line 23, in <module>
+    from datasets import load_dataset
+ModuleNotFoundError: No module named 'datasets'
+[2024-10-05 20:42:39,930] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 3715
+[2024-10-05 20:42:39,930] [ERROR] [launch.py:325:sigkill_handler] ['/root/miniconda3/envs/milora/bin/python', '-u', 'train.py', '--local_rank=0', '--deepspeed', 'configs/stage2.conf', '--model_name_or_path', '/root/autodl-tmp/meta-llama/Llama-2-7b-hf', '--output_dir', '/math/LLM-Adapters-lora-LR-3e-4--EPOCHS-3-rank-64', '--lora_r', '64', '--lora_alpha', '128', '--lora_dropout', '0.05', '--target_modules', 'q_proj,k_proj,v_proj,up_proj,down_proj', '--data_path', 'meta-math/MetaMathQA', '--dataset_split', '', '--dataset_field', 'query', 'response', '--model_max_length', '2048', '--num_train_epochs', '3', '--per_device_train_batch_size', '1', '--gradient_accumulation_steps', '16', '--save_strategy', 'epoch', '--learning_rate', '3e-4', '--weight_decay', '0.', '--warmup_ratio', '0', '--warmup_steps', '100', '--lr_scheduler_type', 'linear', '--logging_steps', '1', '--bf16', 'True', '--tf32', 'True', '--method_type', 'lora', '--report_to', 'tensorboard'] exits with return code = 1

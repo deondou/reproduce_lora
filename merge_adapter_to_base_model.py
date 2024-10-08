@@ -9,6 +9,8 @@ parser.add_argument('--adapter', type=str)
 parser.add_argument('--output_path', type=str)
 args = parser.parse_args()
 
+print(args.base_model, args.adapter)
+
 model = AutoModelForCausalLM.from_pretrained(args.base_model, torch_dtype=torch.bfloat16, device_map='auto')
 tokenizer = AutoTokenizer.from_pretrained(args.base_model, device_map='auto')
 lora_config = PeftConfig.from_pretrained(args.adapter)

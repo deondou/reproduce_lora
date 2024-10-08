@@ -1,0 +1,43 @@
+promt ===== Below is an instruction that describes a task. Write a response that appropriately completes the request.
+
+### Instruction:
+{instruction}
+
+### Response: Let's think step by step.
+lenght ==== 1319
+sampleing ===== SamplingParams(n=1, best_of=1, presence_penalty=0.0, frequency_penalty=0.0, repetition_penalty=1.0, temperature=0, top_p=1.0, top_k=-1, min_p=0.0, seed=None, use_beam_search=False, length_penalty=1.0, early_stopping=False, stop=['Instruction:', 'Instruction', 'Response:', 'Response'], stop_token_ids=[], include_stop_str_in_output=False, ignore_eos=False, max_tokens=1024, min_tokens=0, logprobs=None, prompt_logprobs=None, skip_special_tokens=True, spaces_between_special_tokens=True, truncate_prompt_tokens=None)
+Traceback (most recent call last):
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/transformers/utils/hub.py", line 398, in cached_file
+    resolved_file = hf_hub_download(
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/math/LLM-Adapters-lora-LR-3e-4--EPOCHS-3-rank-64/ft-merged'. Use `repo_type` argument if needed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/autodl-tmp/MiLoRA/inference/gsm8k_inference.py", line 136, in <module>
+    gsm8k_test(model=args.model, data_path=args.data_file, start=args.start, end=args.end, batch_size=args.batch_size, tensor_parallel_size=args.tensor_parallel_size)
+  File "/root/autodl-tmp/MiLoRA/inference/gsm8k_inference.py", line 93, in gsm8k_test
+    llm = LLM(model=model,tensor_parallel_size=tensor_parallel_size)
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/vllm/entrypoints/llm.py", line 123, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/vllm/engine/llm_engine.py", line 272, in from_engine_args
+    engine_config = engine_args.create_engine_config()
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/vllm/engine/arg_utils.py", line 520, in create_engine_config
+    model_config = ModelConfig(
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/vllm/config.py", line 121, in __init__
+    self.hf_config = get_config(self.model, trust_remote_code, revision,
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/vllm/transformers_utils/config.py", line 23, in get_config
+    config = AutoConfig.from_pretrained(
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 928, in from_pretrained
+    config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/transformers/configuration_utils.py", line 631, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/transformers/configuration_utils.py", line 686, in _get_config_dict
+    resolved_config_file = cached_file(
+  File "/root/miniconda3/envs/milora/lib/python3.10/site-packages/transformers/utils/hub.py", line 462, in cached_file
+    raise EnvironmentError(
+OSError: Incorrect path_or_model_id: '/math/LLM-Adapters-lora-LR-3e-4--EPOCHS-3-rank-64/ft-merged'. Please provide either the path to a local folder or the repo_id of a model on the Hub.

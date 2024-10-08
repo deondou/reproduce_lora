@@ -51,7 +51,7 @@ train() {
         WARM_UP_STEPS=100
         LR_SCHEDULER="linear" 
         LORA_ALPHA=$(($RANK * 2))
-        MAX_LEGNTH=2048
+        MAX_LEGNTH=512 #2048
         DROPOUT=0.05
         TARGET="q_proj,k_proj,v_proj,up_proj,down_proj"
     fi
@@ -81,7 +81,7 @@ train() {
         --lora_dropout $DROPOUT \
         --target_modules $TARGET \
         --data_path $DATA \
-        --dataset_split "$data_num" \
+        --dataset_split "train[:100000]" \
         --dataset_field query $field_2 \
         --model_max_length $MAX_LEGNTH \
         --num_train_epochs $EPOCHS \
@@ -117,7 +117,6 @@ train() {
 # SETTING=$8 
 # METHOD=$9
 
-train /path/to/your/llama2-7b-hf 3 64 "0,1,2,3,4,5,6,7" 29500 meta-math/MetaMathQA LLM-Adapters lora 
-
+train /root/autodl-tmp/meta-llama/Llama-2-7b-hf 1 64 "0" 29500 meta-math/MetaMathQA LLM-Adapters lora 
 
 

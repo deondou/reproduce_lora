@@ -35,7 +35,7 @@ PROMPT = (
 class TrainingArguments(transformers.TrainingArguments):
     model_name_or_path: Optional[str] = field(default="facebook/opt-125m")
     adapter_name_or_path: Optional[str] = field(default=None)
-    data_path: str = field(default=None, metadata={"help": "Path to the training data."})
+    data_path: str = field(default=None, metadata={"help": "/root/autodl-tmp/datasets/MetaMathQA"})
     dataset_split: str = field(
         default="train[:100000]", metadata={"help": "(`['train', 'test', 'eval']`):"}
     )
@@ -248,13 +248,14 @@ def train():
         use_fast=True,
     )
     tokenizer.pad_token_id = tokenizer.eos_token_id
-    
+
+    print(f"Loading dataset with split: {script_args.dataset_split}")    
     raw_train_datasets = load_dataset(script_args.data_path, split=script_args.dataset_split)
 
     train_dataset = raw_train_datasets.map(
         train_tokenize_function,
         batched=True,
-        batch_size=3000,
+        batch_size=1,
         num_proc=32,
         remove_columns=raw_train_datasets.column_names,
         load_from_cache_file=True,
@@ -293,4 +294,6 @@ def train():
     model.save_pretrained(os.path.join(script_args.output_dir,'ft'))
 
 if __name__ == "__main__":
+    print("train YEEAHH train.py")
+
     train()

@@ -117,7 +117,9 @@ def svd_tailor_and_save(args):
     # target_modules = ["q_proj", "k_proj", "v_proj", "up_proj", "down_proj"]
     # target_modules = ['q_proj','k_proj','v_proj','o_proj','gate_proj','up_proj','down_proj']
     # target_modules = ["q_proj", "v_proj"]
-    device = "cuda:0"
+    
+    device = torch.device("cuda") 
+    # device = "cuda:0"
     # device = "cpu"
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
@@ -161,7 +163,7 @@ def svd_tailor_and_save(args):
     base_model = model.unload()
     base_model.save_pretrained(SAVE_PATH, safe_serialization=False)
     tokenizer.save_pretrained(SAVE_PATH)
-    # move_lora_file(SAVE_PATH)
+    move_lora_file(SAVE_PATH)
     logger.info(f"Finished!")
 
 
